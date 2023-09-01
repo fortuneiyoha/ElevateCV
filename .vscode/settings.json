@@ -1,0 +1,17 @@
+{
+  "editor.tabSize": 2,
+  "[html]": {
+    "editor.suggest.insertMode": "replace",
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "liveSassCompile.settings.formats": [
+    {
+      "format": "compressed",
+      "extensionName": ".min.css",
+      "savePath": "/dist",
+      "savePathReplacementPairs": null
+    }
+  ],
+  "liveSassCompile.settings.showOutputWindowOn": "Error",
+  "liveSassCompile.settings.generateMap": false
+}
