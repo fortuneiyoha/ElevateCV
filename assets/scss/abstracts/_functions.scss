@@ -1,0 +1,107 @@
+// --------------------------------------------------------
+// This file contains all application-wide Sass functions.
+// --------------------------------------------------------
+
+@use "variables" as *;
+
+/// Returns a variable of the color based on name color and shade
+/// @access public
+/// @param {String} $color - color name (e.g. 'primary', 'accent'...)
+/// @param {Number} $shade - shade value
+/// @return {CSS var} (e.g. var(--clr-primary-400))
+/// @require $color
+@function clr($color, $shade: 400) {
+  @if not map-has-key($colors, $color) {
+    @error 'There is no color named `#{$color}` in $colors. '
+         + 'Color should be one of the following - #{map-keys($colors)}.';
+  }
+
+  @return var(--clr-#{$color}-#{$shade});
+}
+
+/// Returns a font family variable
+/// @access public
+/// @param {String} $family - font name
+/// @return {CSS var} (e.g. var(--ff-primary))
+@function ff($family) {
+  @return var(--ff-#{$family});
+}
+
+/// Returns a font size variable
+/// @access public
+/// @param {Number} $size - number value
+/// @return {CSS var} (e.g. var(--fs-6))
+@function fs($size: 6) {
+  @return var(--fs-#{$size});
+}
+
+/// Returns a font weight variable
+/// @access public
+/// @param {String} $weight - weight value
+/// @return {CSS var} (e.g. var(--fw-regular))
+/// @require $weight
+@function fw($weight) {
+  @if not map-has-key($font-weights, $weight) {
+    @error 'There is no weight named `#{$weight}` in $font-weights. '
+         + 'Weight should be one of the following - #{map-keys($font-weights)}.';
+  }
+
+  @return var(--fw-#{$weight});
+}
+
+/// Returns a value in (px) converted to (rem)
+/// @access public
+/// @param {Number} $value - value in px
+/// @return {Number}
+/// @require $value
+@function to-rem($value) {
+  $rem-value: $value / 16;
+
+  @return #{$rem-value}rem;
+}
+
+/// Returns a value in (px) converted to (vw), given a view width as a
+/// reference and the font size in px to these view width
+/// @access public
+/// @param {Number} $value - font size in px
+/// @param {Number} $width - reference width in px
+/// @return {Number}
+/// @require $value
+@function to-vw($value, $width: 720) {
+  $vw-value: $value * 100 / $width;
+
+  @return #{$vw-value}vw;
+}
+
+/// Returns the font size using the clamp function to make it responsive
+/// @access public
+/// @param {Number} $min - min font size in px
+/// @param {Number} $max - max font size in px
+/// @return {Function} - function clamp using the min and max value
+/// @require $min
+/// @require $max
+@function minmax-fs($min, $max) {
+  @return clamp(to-rem($min), to-vw(calc(($min + $max) / 2)), to-rem($max));
+}
+
+/// Returns a spacer variable
+/// @access public
+/// @param {Number} $size - number value
+/// @return {CSS var} (e.g. var(--spacer-3))
+@function spacer($size: 3) {
+  @return var(--spacer-#{$size});
+}
+
+/// Get a z-index value from a layer name
+/// @access public
+/// @param {String} $layer - layer's name
+/// @return {Number}
+/// @require $z-indexes
+@function z($layer) {
+  @if not map-has-key($z-indexes, $layer) {
+    @error 'There is no layer named `#{$layer}` in $z-indexes. '
+         + 'Layer should be one of the following - #{map-keys($z-indexes)}.';
+  }
+
+  @return map-get($z-indexes, $layer);
+}

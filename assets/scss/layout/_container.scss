@@ -1,0 +1,30 @@
+// ---------------------------------------------------------------------
+// This file contains all styles related to the container of the site.
+// ---------------------------------------------------------------------
+
+@use "../abstracts/" as *;
+
+/**
+ * Main content containers
+ * 1. Make the container full-width with a maximum width
+ * 2. Center it in the viewport
+ * 3. Leave some space on the edges, especially valuable on small screens
+ */
+
+.container {
+  --container-max-width: 40em;
+  margin-inline: auto; /* 2 */
+  width: min((100% - 2rem), var(--container-max-width)); /* min([3], [1]) */
+
+  @include breakpoint-up(md) {
+    --container-max-width: 50em;
+  }
+
+  @include breakpoint-up(lg) {
+    --container-max-width: 70em;
+  }
+
+  @include breakpoint-up(xl) {
+    --container-max-width: 75em;
+  }
+}

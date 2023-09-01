@@ -1,0 +1,79 @@
+/* 
+ * Sass Boilerplate - v1.0.0
+ * Add description here
+ * add GitHub repo [link here](https://link_to_repo)
+ */
+
+/*  Use a more-intuitive box-sizing model. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Typographic tweaks!
+ * > Add accessible line-height
+ * > Improve text rendering
+ */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Remove built-in form typography styles */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/*
+ * Remove list styles on ul, ol elements with a list role, 
+ * which suggests default styling will be removed 
+ */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Anchor elements that have a class don't get default styles */
+a[class] {
+  text-decoration: none;
+}
+
+/* Change default cursor to indicate clickable */
+summary {
+  cursor: pointer;
+}
+
+/* Change the default outline of (a, summary) when tabbed */
+a:focus-visible,
+summary:focus-visible {
+  outline-offset: var(--spacer-1);
+  outline: 0.125rem dotted var(--clr-primary-400);
+}

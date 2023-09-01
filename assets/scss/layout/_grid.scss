@@ -1,0 +1,19 @@
+// ----------------------------------------------------------------
+// This file contains all styles related to the grid of the site.
+// ----------------------------------------------------------------
+
+@use "../abstracts/" as *;
+
+.grid {
+  --gap: 3rem; // 48px
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(var(--column-count, 1), 1fr);
+  grid-template-rows: repeat(var(--row-count, 1), 1fr);
+  gap: var(--gap);
+
+  @include breakpoint-up(md) {
+    --column-count: 2;
+    grid-auto-flow: column;
+  }
+}

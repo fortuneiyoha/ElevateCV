@@ -1,0 +1,170 @@
+// --------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// --------------------------------------------------------
+
+//
+// Utilities List
+// Used for generating utility classes in `_helpers.scss`.
+//
+$sizes: xs sm md lg xl xxl;
+$margin: m mx my mt me mb ms;
+$padding: p px py pt pe pb ps;
+$text-align: start center end;
+
+/// Breakpoints map
+///
+/// @access public
+/// @type Map
+/// @prop {String} key - Keys are identifiers mapped to a given length
+/// @prop {Number} value - Values are actual breakpoints expressed in `em`
+
+// 0, 540px, 840px, 992px, 1200px, 1440px
+$breakpoint-up: (
+  "xs": 0,
+  "sm": 33.75em,
+  "md": 52.5em,
+  "lg": 62em,
+  "xl": 75em,
+  "xxl": 90em,
+);
+
+// 0, 539.84px, 839.84px, 991.84px, 1199.84px, 1439.84px
+$breakpoint-down: (
+  "xs": 0,
+  "sm": 33.74em,
+  "md": 52.49em,
+  "lg": 61.99em,
+  "xl": 74.99em,
+  "xxl": 89.99em,
+);
+
+/// Colors
+///
+/// colors map, contains all colors of the site
+/// @access public
+/// @type Map
+/// @prop {String} key - color name
+/// @prop {Map} shade - shade map
+/// @prop {Number} value - shade value mapped to the key
+$colors: (
+  "primary": (
+    100: hsl(216, 100%, 95%),
+    200: hsl(216, 100%, 85%),
+    300: hsl(216, 100%, 75%),
+    400: hsl(216, 100%, 65%),
+    500: hsl(216, 100%, 55%),
+    600: hsl(216, 100%, 45%),
+    700: hsl(216, 100%, 35%),
+    800: hsl(216, 100%, 25%),
+    900: hsl(216, 100%, 15%),
+  ),
+  "neutral": (
+    100: hsl(0, 0%, 100%),
+    200: hsl(225, 40%, 83%),
+    300: hsl(225, 21%, 45%),
+    400: hsl(225, 21%, 45%),
+    500: hsl(225, 26%, 23%),
+    600: hsl(225, 26%, 23%),
+    700: hsl(224, 35%, 11%),
+    800: hsl(224, 25%, 8%),
+    900: hsl(224, 15%, 4%),
+  ),
+  "accent": (
+    1: hsl(0, 96%, 61%),
+    2: hsl(50, 96%, 61%),
+    3: hsl(250, 96%, 61%),
+  ),
+);
+
+//
+// Font
+//
+// Font Family
+$ff-primary: "Poppins", sans-serif;
+$ff-secondary: "Open Sans", sans-serif;
+$ff-body: $ff-primary;
+$ff-heading: $ff-secondary;
+$ff-lead: $ff-primary;
+$ff-button: $ff-primary;
+
+/// Font Sizes
+/// font-sizes map, contains all font sizes of text
+/// sizes are based on heading levels `h1-h6`
+/// @access public
+/// @type Map
+/// @prop {Number} key - size number
+/// @prop {Number} value - size value mapped to the key
+$font-size-base: 1rem; // Assumes the browser default, typically `16px`
+$font-sizes: (
+  1: $font-size-base * 3.5,
+  2: $font-size-base * 3,
+  3: $font-size-base * 2.5,
+  4: $font-size-base * 2,
+  5: $font-size-base * 1.5,
+  6: $font-size-base,
+);
+
+$fs-body: $font-size-base;
+$fs-heading: $font-size-base * 2.5;
+$fs-lead: $font-size-base;
+$fs-button: $font-size-base;
+
+/// Font Weight
+/// font-weights map, contains all font weight of text
+/// @access public
+/// @type Map
+/// @prop {String} key - weight's name
+/// @prop {Number} value - weight value mapped to the key
+$font-weights: (
+  "lighter": lighter,
+  "light": 300,
+  "regular": 400,
+  "medium": 500,
+  "semi-bold": 600,
+  "bold": 700,
+  "bolder": bolder,
+);
+
+/// Spacing
+///
+/// spacers map, contains all spacer value of the site
+/// @access public
+/// @type Map
+/// @prop {String} key - spacer id
+/// @prop {Number} value - spacer value mapped to the key
+$spacer: 1rem;
+$spacers: (
+  auto: auto,
+  0: 0,
+  1: $spacer * 0.25,
+  2: $spacer * 0.5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 2,
+  6: $spacer * 3,
+);
+
+/// z-indexes map, contains all z-index layers of the site
+/// @access public
+/// @type Map
+/// @prop {String} key - layer’s name
+/// @prop {Number} value - z-index value mapped to the key
+$z-indexes: (
+  "above": 30,
+  "modal": 20,
+  "dropdown": 10,
+  "default": 1,
+  "below": -1,
+);
+
+// Gap
+// Default gap value for layout. (16px)
+$gap: 1rem;
+
+// Events
+$transition: 300ms linear;
+
+// Effects
+$shadow: 0 0.5rem 1rem hsla(0, 0%, 0%, 0.1);
+$shadow-sm: 0 0.5rem 1rem hsla(0, 0%, 0%, 0.25);
+$shadow-lg: 0 0.5rem 1rem hsla(0, 0%, 0%, 0.35);

@@ -1,0 +1,50 @@
+// ---------------------------------------------------------------
+// This file contains all styles related to the button component.
+// ---------------------------------------------------------------
+
+@use "../abstracts/" as *;
+
+.btn {
+  background: transparent;
+  border-radius: 100vw;
+  border: 0.0625rem solid transparent;
+  cursor: pointer;
+  display: inline-block;
+  font-family: ff("secondary");
+  font-size: fs("button");
+  font-weight: fw("semi-bold");
+  outline-offset: spacer(1);
+  padding: spacer(2) spacer(3);
+  text-align: center;
+  text-decoration: none;
+  transition-duration: 200ms;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus-visible {
+    outline: 0.125rem dotted clr("primary", 400);
+  }
+}
+
+.btn-primary {
+  background-color: clr("primary", 400);
+  color: clr("neutral", 100);
+}
+
+.btn-outline {
+  border-color: clr("primary", 400);
+  color: clr("primary", 400);
+}
+
+.btn-outline-primary {
+  border-color: clr("primary", 400);
+  color: clr("primary", 400);
+
+  &:is(:hover, :focus-visible) {
+    background-color: clr("primary", 400);
+    color: clr("neutral", 100);
+    opacity: 1;
+  }
+}

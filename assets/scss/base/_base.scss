@@ -1,0 +1,28 @@
+// -------------------------------------------------
+// This file contains basic and typography styles.
+// -------------------------------------------------
+
+@use "../abstracts/" as *;
+
+body {
+  background-color: clr("neutral", 100);
+  color: clr("neutral", 500);
+  font-family: ff("primary");
+  font-size: fs("body");
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: clr("neutral", 700);
+  font-weight: fw("bold");
+  margin-block-end: spacer(2);
+}
+
+p {
+  color: clr("neutral", 500);
+  margin-block-end: spacer(3);
+}

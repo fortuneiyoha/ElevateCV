@@ -1,0 +1,25 @@
+User-agent: *
+Disallow: /private/
+Disallow: /admin/
+Disallow: /restricted/
+Disallow: /tmp/
+Disallow: /temp/
+Disallow: /uploads/
+Disallow: /logs/
+Disallow: /error/
+Disallow: /cache/
+Disallow: /config/
+Disallow: /docs/
+Disallow: /fonts/
+Disallow: /images/
+Disallow: /js/
+Disallow: /styles/
+Disallow: /src/
+Disallow: /dist/
+Disallow: /node_modules/
+Disallow: /public/
+Disallow: /assets/
+Disallow: /misc/
+Disallow: /design/
+
+Sitemap: https://elevatecv.com/sitemap.xml

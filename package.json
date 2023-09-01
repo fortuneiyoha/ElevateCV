@@ -1,0 +1,25 @@
+{
+  "name": "ElevateCV",
+  "main": "index.js",
+  "version": "1.0.0",
+  "description": "Create a professional resume easily with ElevateCV",
+  "license": "ISC",
+  "author": [
+    "Fortune Iyoha",
+    "Chidiebere Victory"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fix_repo_link.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fix_repo_link/issues"
+  },
+  "scripts": {
+    "build:css": "sass --no-source-map --style=compressed assets/scss/style.scss:dist/style.min.css",
+    "watch:css": "sass --watch --no-source-map --style=compressed assets/scss/style.scss:dist/style.min.css"
+  },
+  "devDependencies": {
+    "sass": "^1.66.0"
+  }
+}

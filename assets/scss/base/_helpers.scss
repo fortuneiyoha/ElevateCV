@@ -1,0 +1,284 @@
+// ----------------------------------------
+// This file contains CSS helper classes.
+// ----------------------------------------
+
+@use "../abstracts/" as *;
+
+/*
+ * ┌────────────────────────────────────────────────────────┐
+ * │                      Float Classes                     │
+ * └────────────────────────────────────────────────────────┘
+ */
+.float-start {
+  float: left;
+}
+
+.float-end {
+  float: right;
+}
+
+/*
+ * Clear inner floats
+ */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/*
+ * ┌────────────────────────────────────────────────────────┐
+ * │                 Hidden Element Classes                 │
+ * └────────────────────────────────────────────────────────┘
+ */
+
+// Hide element while making it readable for screen readers
+.visually-hidden {
+  @include visually-hidden;
+
+  &-focusable:not(:focus):not(:focus-within) {
+    @extend .visually-hidden;
+  }
+}
+
+/*
+ * ┌────────────────────────────────────────────────────────┐
+ * │                       Text Classes                     │
+ * └────────────────────────────────────────────────────────┘
+ */
+
+//
+// Alignment
+//
+@each $align in $text-align {
+  .text-#{$align} {
+    text-align: #{$align};
+  }
+}
+
+//
+// Color
+//
+@each $color, $shades in $colors {
+  @each $shade in map-keys($shades) {
+    .text-#{$color}-#{$shade} {
+      color: clr(#{$color}, #{$shade});
+    }
+  }
+}
+
+.text-light {
+  color: clr("neutral", 100);
+}
+
+.text-dark {
+  color: clr("neutral", 900);
+}
+
+// Add ellipsis to overflowing text
+.text-truncate {
+  @include text-truncate;
+}
+
+// Font Sizes
+@each $size in map-keys($font-sizes) {
+  .fs-#{$size} {
+    font-size: fs(#{$size});
+  }
+}
+
+// Font Weights
+@each $weight in map-keys($font-weights) {
+  .fw-#{$weight} {
+    font-weight: fw(#{$weight});
+  }
+}
+
+/*
+ * ┌────────────────────────────────────────────────────────┐
+ * │                   Background Classes                   │
+ * └────────────────────────────────────────────────────────┘
+ */
+
+//
+// Color
+//
+@each $color, $shades in $colors {
+  @each $shade in map-keys($shades) {
+    .bg-#{$color}-#{$shade} {
+      background-color: clr(#{$color}, #{$shade});
+    }
+  }
+}
+
+.bg-light {
+  background-color: clr("neutral", 100);
+}
+
+.bg-dark {
+  background-color: clr("neutral", 900);
+}
+
+/*
+ * ┌────────────────────────────────────────────────────────┐
+ * │                     Shadow Classes                     │
+ * └────────────────────────────────────────────────────────┘
+ */
+.shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
+.shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+/*
+ * ┌────────────────────────────────────────────────────────┐
+ * │                  Border Radius Classes                 │
+ * └────────────────────────────────────────────────────────┘
+ */
+
+.rounded-circle {
+  border-radius: 50%;
+}
+
+// Use to style an element border radius to clip content
+//
+// Generate border radius utility classes for all
+// spacer keys except for the `auto` key,
+@each $radius in map-keys($spacers) {
+  @if $radius != "auto" {
+    .rounded-#{$radius} {
+      border-radius: spacer($radius);
+    }
+  }
+}
+
+/*
+ * ┌────────────────────────────────────────────────────────┐
+ * │                     Flexbox Classes                    │
+ * └────────────────────────────────────────────────────────┘
+ */
+
+//  Flex Container
+//
+// Style a container as flexbox.
+// Generated based on mixin declaration in `_mixins.scss` and
+// defaults to [align-items, justify-content](flex-start)
+.d-flex {
+  @include flex;
+}
+
+.d-inline-flex {
+  @include inline-flex;
+}
+
+// Gap
+//
+// Use to add space in flexible content
+//
+// Generate padding utility classes for all
+// spacer keys except for the `auto` key,
+@each $gap in map-keys($spacers) {
+  @if $gap != "auto" {
+    .gap-#{$gap} {
+      gap: spacer($gap);
+    }
+  }
+}
+
+/*
+ * ┌────────────────────────────────────────────────────────┐
+ * │                      Spacer Classes                    │
+ * └────────────────────────────────────────────────────────┘
+ */
+
+// * Automatically generate classes for each $spacers key
+// * in `_variables.scss`. Classes are generated in the order
+// * -> auto, 0, inline, block, top, right, bottom, left
+
+//
+// Margin
+//
+@each $spacer in map-keys($spacers) {
+  @each $class in $margin {
+    @if $class == m {
+      .#{$class}-#{$spacer} {
+        margin: spacer($spacer);
+      }
+    } @else if $class == mx {
+      .#{$class}-#{$spacer} {
+        margin-inline: spacer($spacer);
+      }
+    } @else if $class == my {
+      .#{$class}-#{$spacer} {
+        margin-block: spacer($spacer);
+      }
+    } @else if $class == mt {
+      .#{$class}-#{$spacer} {
+        margin-block-start: spacer($spacer);
+      }
+    } @else if $class == me {
+      .#{$class}-#{$spacer} {
+        margin-inline-end: spacer($spacer);
+      }
+    } @else if $class == mb {
+      .#{$class}-#{$spacer} {
+        margin-block-end: spacer($spacer);
+      }
+    } @else if $class == ms {
+      .#{$class}-#{$spacer} {
+        margin-inline-start: spacer($spacer);
+      }
+    } @else {
+      .#{$class}-#{$spacer} {
+        margin: initial;
+      }
+    }
+  }
+}
+
+//
+// Padding
+//
+// Generate padding utility classes for all
+// spacer keys except for the `auto` key,
+// because of browser compatibility
+@each $spacer in map-keys($spacers) {
+  @if $spacer != "auto" {
+    @each $class in $padding {
+      @if $class == p {
+        .#{$class}-#{$spacer} {
+          padding: spacer($spacer);
+        }
+      } @else if $class == px {
+        .#{$class}-#{$spacer} {
+          padding-inline: spacer($spacer);
+        }
+      } @else if $class == py {
+        .#{$class}-#{$spacer} {
+          padding-block: spacer($spacer);
+        }
+      } @else if $class == pt {
+        .#{$class}-#{$spacer} {
+          padding-block-start: spacer($spacer);
+        }
+      } @else if $class == pe {
+        .#{$class}-#{$spacer} {
+          padding-inline-end: spacer($spacer);
+        }
+      } @else if $class == pb {
+        .#{$class}-#{$spacer} {
+          padding-block-end: spacer($spacer);
+        }
+      } @else if $class == ps {
+        .#{$class}-#{$spacer} {
+          padding-inline-start: spacer($spacer);
+        }
+      } @else {
+        .#{$class}-#{$spacer} {
+          padding: initial;
+        }
+      }
+    }
+  }
+}
